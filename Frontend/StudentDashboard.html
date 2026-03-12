@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="StudentDashboard.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <h2>🎓 TYIT Project Selector</h2>
+    <ul>
+        <li><a href="StudentDashboard.html">Home</a></li>
+        <li><a href="FinalProject.html" id="registerLink">Submit Project</a></li>
+        <li><a href="#" onclick="logout()">Logout</a></li>
+    </ul>
+</nav>
+
+<div class="dashboard-container">
+    <h2>Your Project Submissions</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Sr No</th>
+                <th>Date</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+
+    <p id="lockMessage" style="color:green; font-weight:bold;"></p>
+
+    <button id="aiBtn" style="display:none;">
+        Get AI Project Recommendation
+    </button>
+</div>
+
+<script src="StudentDashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* PAGE BACKGROUND */
+body{
+    background:#fff6ee;
+}
+
+/* NAVBAR */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background:linear-gradient(90deg,#ff9a5a,#ff7a18);
+    color:white;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.navbar ul{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+
+.navbar a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+    position:relative;
+}
+
+.navbar a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-4px;
+    width:0;
+    height:2px;
+    background:white;
+    transition:0.3s;
+}
+
+.navbar a:hover::after{
+    width:100%;
+}
+
+/* CSV BUTTON */
+.csv-container{
+    margin:25px 40px;
+    text-align:right;
+}
+
+.csv-container button{
+    padding:9px 16px;
+    background:linear-gradient(90deg,#ff9a5a,#ff7a18);
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:500;
+    transition:all 0.25s ease;
+}
+
+.csv-container button:hover{
+    background:linear-gradient(90deg,#ff7a18,#ff6a00);
+    transform:translateY(-2px);
+    box-shadow:0 6px 15px rgba(255,122,24,0.25);
+}
+
+/* TABLE CARD */
+.table-container{
+    margin:20px 40px;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.06);
+    overflow-x:auto;
+}
+
+/* TABLE */
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#ff7a18;
+}
+
+th{
+    padding:14px;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    color:white;
+}
+
+td{
+    padding:14px;
+    font-size:13px;
+    color:#333;
+    border-bottom:1px solid #eee;
+}
+
+tbody tr:hover{
+    background:#fff2e7;
+}
+
+/* STATUS TEXT - Student Dashboard Style */
+.status {
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+
+.status.approved {
+    color: #16a34a;
+    background: #e6f4ea;
+}
+
+.status.rejected {
+    color: #dc2626;
+    background: #fdecea;
+}
+
+.status.under-review {
+    color: #f59e0b;
+    background: #fff7e6;
+}
+
+.status.ai-generated {
+    color: #2563eb;
+    background: #e6f0fd;
+}
+
+/* ACTION BUTTONS */
+.action-btn{
+    padding:7px 14px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:500;
+    margin:2px;
+    transition:all 0.2s ease;
+}
+
+.action-btn.approve{
+    background:#16a34a;
+    color:white;
+}
+
+.action-btn.reject{
+    background:#dc2626;
+    color:white;
+}
+
+.action-btn.approve:hover{
+    background:#15803d;
+    transform:translateY(-1px);
+}
+
+.action-btn.reject:hover{
+    background:#b91c1c;
+    transform:translateY(-1px);
+}
+
+/* MOBILE */
+@media(max-width:900px){
+    .navbar{
+        padding:12px 20px;
+    }
+    .csv-container{
+        margin:20px;
+    }
+    .table-container{
+        margin:20px;
+    }
+    table{
+        font-size:12px;
+    }
+}

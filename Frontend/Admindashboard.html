@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="AdminDashboard.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <h2>Admin Dashboard</h2>
+    <ul>
+        <li><a href="AdminDashboard.html">Home</a></li>
+        <li><a href="#" onclick="logout()">Logout</a></li>
+    </ul>
+</nav>
+
+<div class="csv-container">
+    <button id="exportCsvBtn">Export CSV</button>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Roll No</th>
+                <th>Project Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Submission Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+</div>
+
+<script src="AdminDashboard.js"></script>
+</body>
+</html>

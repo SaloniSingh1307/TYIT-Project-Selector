@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+/* PAGE BACKGROUND */
+
+body{
+height:100vh;
+background:#fff6ee;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* MAIN CONTAINER */
+
+.main-container{
+width:900px;
+height:520px;
+background:white;
+border-radius:14px;
+display:flex;
+overflow:hidden;
+box-shadow:0 20px 50px rgba(0,0,0,0.08);
+animation:fadeIn 0.6s ease;
+}
+
+/* LEFT PANEL */
+
+.leftbox{
+flex:1;
+background:linear-gradient(135deg,#ffb36b,#ff7a18);
+color:white;
+padding:60px 40px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.leftbox h1{
+font-size:30px;
+margin-bottom:20px;
+font-weight:600;
+}
+
+.leftbox p{
+font-size:15px;
+line-height:1.6;
+opacity:0.9;
+}
+
+/* RIGHT PANEL */
+
+.rightbox{
+flex:1;
+padding:60px 50px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.rightbox h2{
+margin-bottom:30px;
+font-weight:600;
+color:#333;
+}
+
+/* FORM */
+
+form{
+display:flex;
+flex-direction:column;
+}
+
+label{
+font-size:13px;
+margin-bottom:6px;
+color:#555;
+}
+
+/* INPUTS */
+
+input,select{
+padding:11px 12px;
+margin-bottom:18px;
+border:1px solid #e5e7eb;
+border-radius:8px;
+font-size:14px;
+transition:all 0.2s ease;
+background:#fafafa;
+}
+
+input:focus,select:focus{
+outline:none;
+border-color:#ff7a18;
+background:white;
+box-shadow:0 0 0 2px rgba(255,122,24,0.15);
+}
+
+/* LOGIN BUTTON */
+
+button[type="submit"]{
+background:#ff7a18;
+border:none;
+color:white;
+padding:12px;
+border-radius:8px;
+font-size:15px;
+font-weight:500;
+cursor:pointer;
+transition:all 0.25s ease;
+}
+
+button[type="submit"]:hover{
+background:#ff6a00;
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(255,122,24,0.3);
+}
+
+/* REGISTER LINK */
+
+.rightbox button{
+background:none;
+border:none;
+margin-top:14px;
+}
+
+.rightbox a{
+color:#ff7a18;
+text-decoration:none;
+font-weight:500;
+font-size:14px;
+}
+
+.rightbox a:hover{
+text-decoration:underline;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(15px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px){
+
+.main-container{
+flex-direction:column;
+width:92%;
+height:auto;
+}
+
+.leftbox{
+padding:40px 25px;
+text-align:center;
+}
+
+.rightbox{
+padding:35px;
+}
+
+}

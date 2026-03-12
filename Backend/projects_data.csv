@@ -1,0 +1,4 @@
+project_id,rollno,title,description,status,is_ai_generated,submission_no,created_at
+1,TYIT001,AI Attendance System,Face recognition based attendance system for classrooms,Submitted,True,1,2026-02-10 16:41:46.030
+2,TYIT002,Online Examination Portal,Web-based system for conducting and evaluating online exams,Approved,False,1,2026-02-10 16:41:46.030
+3,TYIT003,Smart Waste Management,IoT based waste monitoring and route optimization system,Pending,False,1,2026-02-10 16:41:46.030

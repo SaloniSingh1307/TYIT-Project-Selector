@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - TYIT Project Selector</title>
+    <link rel="stylesheet" href="Register.css">
+</head>
+
+<body>
+
+<div class="register-container">
+    <h2>Register Yourself</h2>
+
+    <form id="registerForm">
+
+        <label>Full Name</label>
+        <input type="text" id="name" placeholder="Enter your full name" required>
+
+        <label>Roll Number</label>
+        <input type="text" id="rollno" placeholder="Enter your roll number" required>
+
+        <label>Email Address</label>
+        <input type="email" id="email" placeholder="Enter your college email" required>
+
+        <label>Password</label>
+        <div style="position: relative;">
+            <input type="password" id="password" placeholder="Enter your password" required>
+            <span id="togglePwd1" 
+                style="position:absolute; right:10px; top:8px; cursor:pointer;"
+                onclick="togglePassword('password','togglePwd1')">👁️</span>
+        </div>
+
+        <label>Confirm Password</label>
+        <div style="position: relative;">
+            <input type="password" id="confirm_password" placeholder="Confirm your password" required>
+            <span id="togglePwd2" 
+                style="position:absolute; right:10px; top:8px; cursor:pointer;"
+                onclick="togglePassword('confirm_password','togglePwd2')">👁️</span>
+        </div>
+
+        <button type="submit">Register</button>
+
+        <p style="margin-top:15px;">
+            Already registered?
+            <a href="Login.html">Login Here</a>
+        </p>
+
+    </form>
+</div>
+
+<script src="Register.js"></script>
+</body>
+</html>

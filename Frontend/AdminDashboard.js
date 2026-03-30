@@ -15,12 +15,20 @@ function getStatusClass(status) {
 function loadProjects() {
 
     fetch("http://127.0.0.1:5000/admin/projects", {
-        headers: { "Authorization": token }
+        headers: { "Authorization": "Bearer " + token }
     })
-    .then(res => res.json())
+    .then(res => {
+        if (!res.ok) throw new Error();
+        return res.json();
+    })
     .then(data => {
 
         tableBody.innerHTML = "";
+
+        if (data.length === 0) {
+            tableBody.innerHTML = "<tr><td colspan='7'>No projects</td></tr>";
+            return;
+        }
 
         data.forEach((p, index) => {
 
@@ -29,11 +37,9 @@ function loadProjects() {
             if (p.status === "Under Review" && !p.is_ai_generated) {
                 action = `
                     <button class="action-btn approve" onclick="approve(${p.project_id})">Approve</button>
-                    <button class="action-btn reject" onclick="reject(${p.project_id})">Reject</button>
+     <button class="action-btn reject" onclick="reject(${p.project_id})">Reject</button>
                 `;
             }
-
-            const statusClass = getStatusClass(p.status);
 
             tableBody.innerHTML += `
                 <tr>
@@ -41,24 +47,30 @@ function loadProjects() {
                     <td>${p.rollno}</td>
                     <td>${p.title}</td>
                     <td>${p.description}</td>
-                    <td><span class="status ${statusClass}">${p.status}</span></td>
+                    <td>${p.status}</td>
                     <td>${p.created_at}</td>
                     <td>${action}</td>
                 </tr>
             `;
         });
 
+    })
+    .catch(() => {
+        tableBody.innerHTML = "<tr><td colspan='7'>Error loading data</td></tr>";
     });
 
 }
 
 loadProjects();
+setInterval(loadProjects, 3000); // ✅ auto refresh
 
 function approve(id) {
 
+    if (!confirm("Approve this project?")) return;
+
     fetch(`http://127.0.0.1:5000/admin/approve/${id}`, {
         method: "POST",
-        headers: { "Authorization": token }
+        headers: { "Authorization": "Bearer " + token }
     })
     .then(() => loadProjects());
 
@@ -66,9 +78,11 @@ function approve(id) {
 
 function reject(id) {
 
+    if (!confirm("Reject this project?")) return;
+
     fetch(`http://127.0.0.1:5000/admin/reject/${id}`, {
         method: "POST",
-        headers: { "Authorization": token }
+        headers: { "Authorization": "Bearer " + token }
     })
     .then(() => loadProjects());
 
@@ -77,7 +91,7 @@ function reject(id) {
 document.getElementById("exportCsvBtn").onclick = function () {
 
     fetch("http://127.0.0.1:5000/admin/download", {
-        headers: { "Authorization": token }
+        headers: { "Authorization": "Bearer " + token }
     })
     .then(res => res.blob())
     .then(blob => {

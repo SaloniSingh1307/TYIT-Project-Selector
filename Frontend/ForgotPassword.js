@@ -1,14 +1,12 @@
-document.getElementById("registerForm").addEventListener("submit", function (e) {
+document.getElementById("forgotForm").addEventListener("submit", function (e) {
 
     e.preventDefault();
 
-    const rollno = document.getElementById("rollno").value.trim();
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
-    const confirm = document.getElementById("confirm_password").value.trim();
 
-    if (!rollno || !email || !password || !confirm) {
-        alert("All fields are required");
+    if (!email || !password) {
+        alert("All fields required");
         return;
     }
 
@@ -22,16 +20,12 @@ document.getElementById("registerForm").addEventListener("submit", function (e) 
         return;
     }
 
-    if (password !== confirm) {
-        alert("Passwords do not match");
-        return;
-    }
-
-    fetch("http://127.0.0.1:5000/register", {
+    fetch("http://127.0.0.1:5000/forgot-password", {
         method: "POST",
-        headers: {"Content-Type":"application/json"},
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify({
-            rollno: rollno,
             username: email,
             password: password
         })
@@ -41,8 +35,11 @@ document.getElementById("registerForm").addEventListener("submit", function (e) 
         return res.json();
     })
     .then(() => {
-        alert("Registration successful");
+        alert("Password updated successfully");
         window.location.href = "Login.html";
     })
-    .catch(() => alert("Registration failed"));
+    .catch(() => {
+        alert("User not found");
+    });
+
 });

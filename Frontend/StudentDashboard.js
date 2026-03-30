@@ -13,16 +13,26 @@ document.addEventListener("DOMContentLoaded", function(){
     function loadProjects(){
 
         fetch("http://127.0.0.1:5000/student/projects", {
-            headers: { "Authorization": token }
+            headers: { "Authorization": "Bearer " + token }
         })
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok) throw new Error();
+            return res.json();
+        })
         .then(data => {
 
             tableBody.innerHTML = "";
 
+            if (data.projects.length === 0) {
+                tableBody.innerHTML = "<tr><td colspan='5'>No projects found</td></tr>";
+                return;
+            }
+
             data.projects.forEach((p, index) => {
 
-                let statusClass = p.status.toLowerCase().replace(/\s+/g, "-");
+                let statusClass = p.is_ai_generated 
+                    ? "ai-generated" 
+                    : p.status.toLowerCase().replace(/\s+/g, "-");
 
                 tableBody.innerHTML += `
                     <tr>
@@ -35,30 +45,34 @@ document.addEventListener("DOMContentLoaded", function(){
                 `;
             });
 
-            if(data.attempt_count >= 5 && !data.is_locked){
-                aiBtn.style.display = "block";
-            } 
-            else{
-                aiBtn.style.display = "none";
-            }
+            // ✅ AI logic fixed
+            aiBtn.style.display = data.all_rejected ? "block" : "none";
 
+        })
+        .catch(() => {
+            tableBody.innerHTML = "<tr><td colspan='5'>Error loading data</td></tr>";
         });
 
     }
 
     loadProjects();
+    setInterval(loadProjects, 3000); // ✅ auto refresh
 
     aiBtn.addEventListener("click", function(){
 
         fetch("http://127.0.0.1:5000/ai/recommend", {
             method: "POST",
-            headers: { "Authorization": token }
+            headers: { "Authorization": "Bearer " + token }
         })
-        .then(res => res.json())
-        .then(data => {
+        .then(res => {
+            if (!res.ok) throw new Error();
+            return res.json();
+        })
+        .then(() => {
+            alert("AI Project Assigned");
             loadProjects();
-        });
-
+        })
+        .catch(() => alert("AI not allowed yet"));
     });
 
 });

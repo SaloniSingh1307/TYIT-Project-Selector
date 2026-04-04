@@ -22,7 +22,7 @@ A role-based web application designed to streamline the process of selecting and
 
 ---
 
-## ⚙️ How It Works
+##  How It Works
 
 1. Students register and log in to the system  
 2. Submit 3 project preferences per attempt  
@@ -58,7 +58,7 @@ A role-based web application designed to streamline the process of selecting and
 
 ---
 
-## 👩‍💻 Author
+##  Author
 
 **Saloni Ashok Singh**  
 GitHub: https://github.com/SaloniSingh1307

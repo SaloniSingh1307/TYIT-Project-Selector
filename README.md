@@ -1,4 +1,4 @@
-# TYIT Project Selector
+# Smart Project Allocation System (TYIT Project Selector(
 
 A role-based web application designed to streamline the process of selecting and allocating final-year IT projects for students
 

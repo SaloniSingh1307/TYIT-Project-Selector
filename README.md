@@ -161,4 +161,4 @@ GitHub:
 https://github.com/SaloniSingh1307
 
 LinkedIn:
-(Add your LinkedIn URL here)
+www.linkedin.com/in/salonisingh1307
